@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.iNeedToHideThis{
+  display: none;
+}
+
+main{
+  display: flex;
+}
+#temp{
+  border: 1px solid black;
+}
+#forecast{
+  border: 1px solid black;
+}
+
+#other{
+  border: 1px solid black;
+}
+
