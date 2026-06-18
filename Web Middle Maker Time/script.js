@@ -1,10 +1,15 @@
 //api bfc7ab6444374889b86143321262805 http://api.weatherapi.com/v1/current.json?key=bfc7ab6444374889b86143321262805&q=${location}&units=metric&aqi=no
 
 let main = document.getElementById("main")
+let temp = document.getElementById("temp")
 let weather = document.getElementById("weather")
 let userInput = document.getElementById("userInput")
 let form = document.getElementById("form")
-let hidden = document.querySelector('.iNeedToHideThis') 
+let hidden = document.querySelector('.iNeedToHideThis')
+let c = document.getElementById("c")
+let f = document.getElementById("f")
+let temperature = document.getElementById("temperature")
+
 
 async function getWeather() {
     const apiKey = "bfc7ab6444374889b86143321262805"
@@ -33,37 +38,25 @@ async function getWeather() {
     main.innerHTML='<h1>No matching location found.</h1>'
   }else{
 
-
+    // temp.innerHTML = `
+    
+    // <div id="temp">
+    //       <div>Temperature</div>
+    //     <input id="c" type="button" value="C" >
+    //     <input id="f" type="button" value="F" >
+    //   </div>
+    // `
   main.innerHTML=
   `<main >
-      <div id="temp">
-          <div id="tempC">
-            tempC=${data.current.temp_c}
-          </div>
-          <div id="tempF">
-            tempF=${data.current.temp_f}
-          </div>
-      </div>
+      
 
-      <!-- <div id="weather">
+      <div id="weather">
           
-        </div> -->
+        </div>
         
       </div>
 
-       <div id="forecast" >
-        <h2>Forecast</h2>
-        <div>Date: ${forecastData.forecast.forecastday[1].date}</div>
-        <div><img src="${forecastData.forecast.forecastday[1].day.condition.icon}" alt=""></div>
-        <div> ${forecastData.forecast.forecastday[1].day.condition.text}</div>
-        <div>maxtemp_c ${forecastData.forecast.forecastday[1].day.maxtemp_c} </div>
-        <div>mintemp_c ${forecastData.forecast.forecastday[1].day.mintemp_c}</div>
-        <div>avgtemp_c ${forecastData.forecast.forecastday[1].day.avgtemp_c}</div>
-        <div> daily_chance_of_rain ${forecastData.forecast.forecastday[1].day.daily_chance_of_rain}%</div>
-      </div>
-
-
-      <div id="other">
+  <div id="other">
         <h2>Other</h2>
         <div>feels-like=${data.current.feelslike_c}(C)</div>
         <div>wind-speed=${data.current.wind_kph} kph</div>
@@ -73,6 +66,38 @@ async function getWeather() {
         <div>visibility=${data.current.vis_km} km</div>
         <div>Atmospheric pressure=${data.current.pressure_mb}(mb)</div>
       </div>
+
+       <div id="forecast" class="iNeedToHideThis" >
+        <h2>Forecast</h2>
+        <div id="days">
+        <div id="day1">
+        <h3>Date: ${forecastData.forecast.forecastday[1].date}</h3>
+        <div><img src="${forecastData.forecast.forecastday[1].day.condition.icon}" alt=""></div>
+        <div> ${forecastData.forecast.forecastday[1].day.condition.text}</div>
+        <div>maxtemp_c ${forecastData.forecast.forecastday[1].day.maxtemp_c} </div>
+        <div>mintemp_c ${forecastData.forecast.forecastday[1].day.mintemp_c}</div>
+        <div>avgtemp_c ${forecastData.forecast.forecastday[1].day.avgtemp_c}</div>
+        <div> chance_of_rain ${forecastData.forecast.forecastday[1].day.daily_chance_of_rain}%</div>
+     
+      </div>
+      <div id="day2">
+        
+        <h3>Date: ${forecastData.forecast.forecastday[2].date}</h3>
+        <div><img src="${forecastData.forecast.forecastday[2].day.condition.icon}" alt=""></div>
+        <div> ${forecastData.forecast.forecastday[2].day.condition.text}</div>
+        <div>maxtemp_c ${forecastData.forecast.forecastday[2].day.maxtemp_c} </div>
+        <div>mintemp_c ${forecastData.forecast.forecastday[2].day.mintemp_c}</div>
+        <div>avgtemp_c ${forecastData.forecast.forecastday[2].day.avgtemp_c}</div>
+        <div> chance_of_rain ${forecastData.forecast.forecastday[2].day.daily_chance_of_rain}%</div>
+     
+      </div>
+      </div>
+     
+     
+      </div>
+
+
+      
     </main>`
 
 
@@ -85,7 +110,67 @@ async function getWeather() {
   </div>
   
   `
+
+tempC()
+ 
+   c.addEventListener("click", tempC)
   
+ 
+  
+ f.addEventListener("click", tempF)
+
+  
+  
+
+function tempC() {
+
+    temperature.textContent = `${data.current.temp_c}°C`
+}
+
+function tempF() {
+  
+    temperature.textContent = `${data.current.temp_f}°F`
+}
+ 
+ 
+ if(data.current.condition.text == 'Sunny'){
+ document.body.style.backgroundImage = 'url(./images/)'
+document.body.style.backgroundSize = "cover";
+document.body.style.backgroundPosition = "center";
+document.body.style.backgroundRepeat = "no-repeat";
+ }
+
+if(data.current.condition.text == 'Partly Cloudy'){
+ document.body.style.backgroundImage = 'url(./images/)'
+document.body.style.backgroundSize = "cover";
+document.body.style.backgroundPosition = "center";
+document.body.style.backgroundRepeat = "no-repeat";
+ }
+
+ if(data.current.condition.text == 'Cloudy'){
+ document.body.style.backgroundImage = 'url(./images/)'
+document.body.style.backgroundSize = "cover";
+document.body.style.backgroundPosition = "center";
+document.body.style.backgroundRepeat = "no-repeat";
+ }
+
+ if(data.current.condition.text == 'Light rain'){
+ document.body.style.backgroundImage = 'url(./images/)'
+document.body.style.backgroundSize = "cover";
+document.body.style.backgroundPosition = "center";
+document.body.style.backgroundRepeat = "no-repeat";
+
+ }
+ if(data.current.condition.text == 'Rain'){
+ document.body.style.backgroundImage = 'url(./images/)'
+document.body.style.backgroundSize = "cover";
+document.body.style.backgroundPosition = "center";
+document.body.style.backgroundRepeat = "no-repeat";
+ }
+
+
+
+
 }}
 
 
@@ -95,12 +180,12 @@ async function getWeather() {
 
 
 
-
-
 form.addEventListener("submit", (event) => {
-console.log(userInput.value)
+
 
 hidden.classList.remove('iNeedToHideThis')
 getWeather()
 event.preventDefault()
  });
+
+ 

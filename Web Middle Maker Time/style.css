@@ -1,22 +1,74 @@
 * {
   margin: 0;
   padding: 0;
+  
 }
 .iNeedToHideThis{
+  
   display: none;
+  
 }
 
 main{
-  display: flex;
+ display: inline-block;
+ display: flex;
 }
-#temp{
-  border: 1px solid black;
+#temperature{
+  
+  display: flex;
+  
+ 
+  
+}
+#wholeTemp{
+  
+  
+ 
+ font-size: 4rem;
+   display: inline-block;
+    display: flex;
+    
 }
 #forecast{
+  border: 1px solid black;
+  display: block;
+
+}
+#days{
+  display: flex;
+}
+#day1{
+  border: 1px solid black;
+}
+#day2{
   border: 1px solid black;
 }
 
 #other{
   border: 1px solid black;
 }
+#c{
+  height: 2rem;
+  width: 2rem;
+}
+#f{
+  height: 2rem;
+  width: 2rem;
+}
+#buttons{
+  margin-top: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  
+  
+}
+#c{
+  cursor: pointer;
+}
+#f{
+  cursor: pointer;
+}
 
+#weather{
+  display: flex;
+}
