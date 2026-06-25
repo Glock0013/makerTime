@@ -38,57 +38,72 @@ async function getWeather() {
     main.innerHTML='<h1>No matching location found.</h1>'
   }else{
 
-    // temp.innerHTML = `
+    weather.innerHTML=`
+  <div id="condition">
+    <img src="${data.current.condition.icon}" alt="">
+    <h1 id="weatherH1">
+      ${data.current.condition.text}
+    </h1>
+ </div>
+  <div id="wholeTemp"  class="iNeedToHideThis">
+      
+  
+      
+  
+  <div id="temperature" >
+      ${data.current.temp_c}°C
+      </div>
     
-    // <div id="temp">
-    //       <div>Temperature</div>
-    //     <input id="c" type="button" value="C" >
-    //     <input id="f" type="button" value="F" >
-    //   </div>
-    // `
+      
+
+      <div id="buttons" >
+          <input id="c" type="button" value="C">
+          <input id="f" type="button" value="F">
+      </div>
+   
+  </div>
+  
+  `
   main.innerHTML=
   `<main >
       
 
-      <div id="weather">
-          
-        </div>
-        
-      </div>
+    
+      
 
   <div id="other">
         <h2>Other</h2>
-        <div>feels-like=${data.current.feelslike_c}(C)</div>
-        <div>wind-speed=${data.current.wind_kph} kph</div>
-        <div>wind-direction=${data.current.wind_dir}</div>
-        <div>chance of rain=${data.current.chance_of_rain}%</div>
-        <div>humidity=${data.current.humidity}</div>
-        <div>visibility=${data.current.vis_km} km</div>
-        <div>Atmospheric pressure=${data.current.pressure_mb}(mb)</div>
+        <div>Feels-like ${data.current.feelslike_c}(°C)</div>
+        <div>Wind-speed: ${data.current.wind_kph} kph</div>
+       
+        <div>Chance of rain: ${data.current.chance_of_rain}%</div>
+        <div>Humidity: ${data.current.humidity}</div>
+        <div>visibility: ${data.current.vis_km} km</div>
+        <div>Atmospheric pressure: ${data.current.pressure_mb}(mb)</div>
       </div>
 
-       <div id="forecast" class="iNeedToHideThis" >
+       <div id="forecast"  >
         <h2>Forecast</h2>
         <div id="days">
         <div id="day1">
-        <h3>Date: ${forecastData.forecast.forecastday[1].date}</h3>
-        <div><img src="${forecastData.forecast.forecastday[1].day.condition.icon}" alt=""></div>
-        <div> ${forecastData.forecast.forecastday[1].day.condition.text}</div>
-        <div>maxtemp_c ${forecastData.forecast.forecastday[1].day.maxtemp_c} </div>
-        <div>mintemp_c ${forecastData.forecast.forecastday[1].day.mintemp_c}</div>
-        <div>avgtemp_c ${forecastData.forecast.forecastday[1].day.avgtemp_c}</div>
-        <div> chance_of_rain ${forecastData.forecast.forecastday[1].day.daily_chance_of_rain}%</div>
+        <h4>Date: ${forecastData.forecast.forecastday[1].date}</h4>
+        <div><img src="${forecastData.forecast.forecastday[1].day.condition.icon}" alt="">
+       ${forecastData.forecast.forecastday[1].day.condition.text}</div>
+        <div>Max temperature: ${forecastData.forecast.forecastday[1].day.maxtemp_c}(°C)</div>
+        <div>Min temperature: ${forecastData.forecast.forecastday[1].day.mintemp_c}(°C)</div>
+        <div>Average temperature: ${forecastData.forecast.forecastday[1].day.avgtemp_c}(°C)</div>
+        <div>Chance of rain: ${forecastData.forecast.forecastday[1].day.daily_chance_of_rain}%</div>
      
       </div>
       <div id="day2">
         
-        <h3>Date: ${forecastData.forecast.forecastday[2].date}</h3>
-        <div><img src="${forecastData.forecast.forecastday[2].day.condition.icon}" alt=""></div>
-        <div> ${forecastData.forecast.forecastday[2].day.condition.text}</div>
-        <div>maxtemp_c ${forecastData.forecast.forecastday[2].day.maxtemp_c} </div>
-        <div>mintemp_c ${forecastData.forecast.forecastday[2].day.mintemp_c}</div>
-        <div>avgtemp_c ${forecastData.forecast.forecastday[2].day.avgtemp_c}</div>
-        <div> chance_of_rain ${forecastData.forecast.forecastday[2].day.daily_chance_of_rain}%</div>
+        <h4>Date: ${forecastData.forecast.forecastday[2].date}</h4>
+        <div><img src="${forecastData.forecast.forecastday[2].day.condition.icon}" alt="">${forecastData.forecast.forecastday[2].day.condition.text}</div>
+        
+        <div>Max temperature: ${forecastData.forecast.forecastday[2].day.maxtemp_c}(°C)</div>
+        <div>Min temperature: ${forecastData.forecast.forecastday[2].day.mintemp_c}(°C)</div>
+        <div>Average temperature: ${forecastData.forecast.forecastday[2].day.avgtemp_c}(°C)</div>
+        <div>Chance of rain: ${forecastData.forecast.forecastday[2].day.daily_chance_of_rain}%</div>
      
       </div>
       </div>
@@ -102,11 +117,28 @@ async function getWeather() {
 
 
   weather.innerHTML=`
-    <div id="weather">
+  <div id="condition">
     <img src="${data.current.condition.icon}" alt="">
     <h1 id="weatherH1">
       ${data.current.condition.text}
     </h1>
+ </div>
+  <div id="wholeTemp"  class="iNeedToHideThis">
+      
+  
+      
+  
+  <div id="temperature" >
+      ${data.current.temp_c}°C
+      </div>
+    
+      
+
+      <div id="buttons" >
+          <input id="c" type="button" value="C">
+          <input id="f" type="button" value="F">
+      </div>
+   
   </div>
   
   `
@@ -167,6 +199,8 @@ document.body.style.backgroundSize = "cover";
 document.body.style.backgroundPosition = "center";
 document.body.style.backgroundRepeat = "no-repeat";
  }
+
+
 
 
 
